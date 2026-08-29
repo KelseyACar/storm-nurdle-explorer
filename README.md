@@ -1,2 +1,80 @@
 # storm-nurdle-explorer
-Spatiotemporal analysis of tropical storm-driven nurdle (pre-production plastic pellet) redistribution along Gulf of Mexico coastlines - R analysis pipeline and interactive Shiny app. 
+Spatiotemporal analysis of tropical storm-driven redistribution of beached microplastics in the Gulf of Mexico.
+
+Analysis pipeline for a thesis investigating whether, where, and how tropical storms redistribute beached pre-production plastic pellets ("nurdles") across the Gulf of Mexico (GoM). The project relies on citizen-science survey data integrated with marine storm track data. While the focus of this project is on the GoM, nurdle and storm data may be collected and integrated for any region, expanding the project. 
+
+## Data Sources
+- **Nurdle Patrol** - citizen science nurdle surveys: counts, location, strandline, date (nurdlepatrol.org)
+- **NOAA NCEI IBTrACS** - tropical cyclone track data, North Atlantic basin, GoM subbasin, 2019-2024 (v4.01, Knapp et al., 2010 - https://doi.org/10.1175/2009BAMS2755.1; Gahtan et al., 2024 - https://doi.org/10.25921/82ty-9e16. Accessed February 22, 2025)
+- **Plastic pellet-handling facility locations** — tier 1 facility list sourced from [Beyond Plastics](https://www.beyondplastics.org/); addresses geocoded in-house via `tidygeocoder` (Census API) and manual Google Maps lookups for ~43 Gulf Coast facilities, with address-formatting and failed-match corrections applied by hand.
+  
+## Overview
+Pre-production plastic pellets are a widespread and largely unregulated source of coastal microplastic (MP) pollution. This project asks three questions:
+
+# 1) Do marine storms redistribute beached MPs, and if so, is the effect consistent across the region, individual storms, and individual survey sites?
+
+# 2) Does storm-driven change differ from ordinary (non-storm) coastal variability in rate, direction, or variance?
+
+# 3) Can storm or site characteristics predict the direction or magnitude of post-storm MP change?
+
+## Findings, in brief
+Storms measurably increase the variance of MP change relative to background conditions, but do not produce a uniform regional shift in abundance or direction. Redistribution is present at regional, per storm, and per site scales, but this redistribution is highly heterogeneous, driven by storm-site interaction rather than any single storm or site characteristic tested. See the publication / Shiny app for full results and discussion.
+
+**Read Thesis:** pending
+**Live App:** https://kelsey-carter.shinyapps.io/nurdle_gom_explorer
+
+## Repository Structure
+
+Scripts are numbered and meant to be run in order. Each stage filters, pairs, or explores/analyzes the data, building on the output of the one before it:
+
+- `0`–`1`: raw data ingestion and cleaning (Nurdle Patrol + IBTrACS)
+- `2`: abundance summarization
+- `3`: regional exploratory data analysis
+- `4`–`5`: rate-of-change, variance, and directional testing (regional/storm/site)
+- `6`: 
+- `7`
+- `8`
+
+Full methodological detail (site-storm linkage criteria, statistical tests, correction procedures) is documented in the thesis Methods chapter; see `data/` for the final merged datasets if you want to skip straight to analysis and disregard scripts 0-1. See renv.lock for the full dependency list (key packages: dplyr, tidyr, sf, lme4, lmerTest, ordinal, emmeans, car).
+
+
+├── Thesis Code/
+│   ├── functions.R                                 # functions sourced in each subsequent script
+│   ├── 0_make_dirs.R                               # create data directory structure
+│   ├── 0_IBTrACS_storms.R                          # pre-process IBTrACS Gulf of Mexico storm tracks
+│   ├── 0_nurdlePatrol.R                            # pre-process Gulf of Mexico Nurdle Patrol data
+│   ├── 1_link_storm_and_nurdle_df.R                # spatiotemporal pairing of storm & nurdle data
+│   ├── 2_summary_stats.R                           # various summary tables of merged dataset
+│   ├── 3_linked_EDA.R                              # exploratory data analysis plots
+│   ├── 4_cntrl_v_storm_redistribution_analysis.R   # rate-of-change, direction, variance testing
+│   ├── 5_redistribution_visualization.R            # redistribution plots
+│   ├── 6_strandline_analysis.R                     # strand-level pre-post storm MP change analysis
+│   ├── 7_storm_characteristics.R                   # storm-level characteristics & predictor models
+│   └── 8_site_characteristics.R                    # site-level characteristics & predictor models
+├── output/
+│   ├── GOM_storms.csv                              # output of script "0_IBTrACS_storms.R"
+│   ├── GOM_nurdle.csv                              # output of script "0_nurdlePatrol.R"
+│   ├── master_df.csv                               # output of script "1_link_storm_and_nurdle_df.R "
+│   ├── manufacturer_df.csv                         # created from Beyond Plastics (2024) tier 1 list
+│   ├── summary_tables/
+│   ├── storm_metrics/
+│   ├── GoM_level/
+│   │   ├── stats/
+│   │   └── graphs/
+│   ├── storm_level/
+│   │   ├── stats/
+│   │   └── graphs/
+│   └── site_level/
+│       ├── stats/
+│       └── graphs/
+├── renv.lock
+└── README.md
+
+## Author
+Kelsey Carter — Arizona State University, Biological Data Science (2026)
+kacart12@asu.edu
+https://www.linkedin.com/in/kelsey-carter-86427a199/
+
+## Acknowledgments
+Project development supported by Dr. Alli Cramer, Assistant Professor, Arizona State University. Nurdle Patrol data made possible by volunteer citizen scientists across the Gulf Coast. 
+Pipeline and Shiny app built and debugged with the assistance of Claude (Anthropic, 2025). 
