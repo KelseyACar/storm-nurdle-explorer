@@ -27,9 +27,21 @@ Storms measurably increase the variance of MP change relative to background cond
 
 Scripts are numbered and meant to be run in order. Each stage filters, pairs, or explores/analyzes the data, building on the output of the one before it.
 
-; see `data/` for the final merged datasets if you want to skip straight to analysis and disregard scripts 0-1. See renv.lock for the full dependency list (key packages: dplyr, tidyr, sf, lme4, lmerTest, ordinal, emmeans, car).
+- `functions.R`: shared functions, sourced by every subsequent script
+- `0_make_dirs.R` / `0_IBTrACS_storms.R` / `0_nurdlePatrol.R`: directory setup and raw data pre-processing (IBTrACS storm tracks, Nurdle Patrol surveys)
+- `1_link_storm_and_nurdle_df.R`: spatiotemporal pairing of storm and survey data
+- `2_summary_stats.R`: summary tables of the merged dataset
+- `3_linked_EDA.R`: exploratory data analysis
+- `4_cntrl_v_storm_redistribution_analysis.R`: rate-of-change, direction, and variance testing
+- `5_redistribution_visualization.R`: redistribution plots
+- `6_strandline_analysis.R`: strand-level (old vs. cumulative) pre/post storm MP change
+- `7_storm_characteristics.R`: storm-level characteristics and predictor models
+- `8_site_characteristics.R`: site-level characteristics and predictor models
+
+See `data/` for the final merged datasets if you want to skip straight to analysis and bypass scripts 0–1. See `renv.lock` for the full dependency list (key packages: `dplyr`, `tidyr`, `sf`, `lme4`, `lmerTest`, `ordinal`, `cplm`, `emmeans`, `car`).
 
 
+```
 ├── Thesis Code/
 │   ├── functions.R                                 # functions sourced in each subsequent script
 │   ├── 0_make_dirs.R                               # create data directory structure
@@ -61,6 +73,7 @@ Scripts are numbered and meant to be run in order. Each stage filters, pairs, or
 │       └── graphs/
 ├── renv.lock
 └── README.md
+```
 
 ## Author
 Kelsey Carter — Arizona State University, Biological Data Science (2026)
