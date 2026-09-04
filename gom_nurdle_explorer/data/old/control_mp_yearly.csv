@@ -1,0 +1,9 @@
+"year","max_total_abundance","min_total_abundance","mean_total_abundance","se_total","max_newstrand_abundance","min_newstrand_abundance","mean_newstrand_abundance","se_newstrand","max_oldstrand_abundance","min_oldstrand_abundance","mean_oldstrand_abundance","se_oldstrand","n_surveys"
+2018,190,0,48,8,123,0,4,4,190,0,45,7,32
+2019,253,0,46,3,253,0,24,3,199,0,39,3,285
+2020,1398,0,55,11,191,0,34,4,1398,0,61,31,135
+2021,2946,0,43,16,2946,0,34,16,252,0,27,6,183
+2022,238,0,27,4,210,0,16,4,238,0,21,5,107
+2023,319,0,24,5,114,0,8,2,319,0,21,6,83
+2024,144,0,31,5,144,0,17,5,129,0,24,5,56
+2025,60,0,22,5,3,0,0,0,60,1,29,6,19

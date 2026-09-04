@@ -1,0 +1,3 @@
+"survey_type","sum_abundance_total","max_abundance_total","min_abundance_total","mean_abundance_total","se_total","median_abundance_total","q1_abundance_total","q3_abundance_total","sum_abundance_new","max_abundance_new","min_abundance_new","mean_abundance_new","se_new","median_abundance_new","q1_abundance_new","q3_abundance_new","sum_abundance_old","max_abundance_old","min_abundance_old","mean_abundance_old","se_old","median_abundance_old","q1_abundance_old","q3_abundance_old","n_surveys"
+"control",36948,2946,0,41,4,20,6,50,21112,2946,0,23,4,0,0,21,19505,1398,0,22,2,3,0,24,899
+"storm_influenced",87242,30846,0,284,114,19,4,62,15765,6945,0,51,23,1,0,22,73579,30846,0,240,112,1,0,21,307

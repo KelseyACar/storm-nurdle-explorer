@@ -1,0 +1,10 @@
+name: nurdle_gom_explorer
+title:
+username: kelsey-carter
+account: kelsey-carter
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 17775431
+bundleId: 12502677
+url: https://kelsey-carter.shinyapps.io/nurdle_gom_explorer/
+version: 1
