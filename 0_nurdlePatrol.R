@@ -53,7 +53,7 @@ nurdle <- nurdle %>%
 # Cluster Proximal Surveys --------------------------------------------------
   # on average, person walks ~ 0.5mi in 10 min (survey time), which is ~ 800m 
   # use DBSCAN to create clusters w/in 800m of each other over all of time
-  # any survey site > 800m of any single surgery site within the cluster will be detected as noise and not included in cluster
+  # any survey site > 800m of any single data point within the cluster will be detected as noise and not included in cluster
 
 # 1) set coordinates object
 coords <- nurdle %>% 
